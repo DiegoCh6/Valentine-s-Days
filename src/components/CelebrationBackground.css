@@ -1,0 +1,73 @@
+.celebration-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.floating-photo {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(255, 23, 68, 0.4);
+  animation: floatIn 8s ease-in-out infinite;
+  overflow: hidden;
+}
+
+.floating-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: zoomRotate 6s ease-in-out infinite;
+}
+
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(100px) scale(0.5);
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-1200px) scale(0.3);
+  }
+}
+
+@keyframes zoomRotate {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(5deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .floating-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-photo {
+    width: 90px;
+    height: 90px;
+    border-radius: 8px;
+  }
+}

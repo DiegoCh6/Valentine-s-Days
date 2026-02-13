@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f0f1e 0%, #1a0a1f 50%, #2d0a3d 100%);
+  color: #fff;
+  overflow-x: hidden;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Smooth transitions */
+* {
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+button {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+a {
+  transition: all 0.3s ease;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d91e63;
+  border-radius: 6px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff1744;
+  background-clip: content-box;
+}
+
+/* Selection styling */
+::selection {
+  background-color: #d91e63;
+  color: #fff;
+}
+
+::-moz-selection {
+  background-color: #d91e63;
+  color: #fff;
+}
+
+::-moz-selection {
+  background-color: #d91e63;
+  color: #fff;
+}

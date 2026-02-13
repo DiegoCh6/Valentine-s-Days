@@ -1,0 +1,141 @@
+.music-toggle {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff1744 0%, #d91e63 100%);
+  border: 2px solid #ff6090;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 20px rgba(255, 23, 68, 0.3);
+  z-index: 100;
+  overflow: hidden;
+}
+
+.music-prompt {
+  position: fixed;
+  bottom: 100px;
+  right: 10px;
+  background: linear-gradient(135deg, #ff1744 0%, #d91e63 100%);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(255, 23, 68, 0.4);
+  z-index: 99;
+  animation: bouncePrompt 2s ease-in-out infinite;
+  white-space: nowrap;
+}
+
+@keyframes bouncePrompt {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.music-toggle:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 8px 35px rgba(255, 23, 68, 0.5);
+}
+
+.music-toggle:active {
+  transform: translateY(-5px) scale(0.95);
+}
+
+.music-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.equalizer {
+  display: flex;
+  gap: 3px;
+  height: 20px;
+  align-items: flex-end;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s ease;
+}
+
+.bar {
+  width: 3px;
+  background: #fff;
+  border-radius: 2px;
+  animation: none;
+}
+
+.music-toggle.playing .bar:nth-child(1) {
+  height: 12px;
+  animation: barMove 0.6s ease-in-out infinite;
+}
+
+.music-toggle.playing .bar:nth-child(2) {
+  height: 18px;
+  animation: barMove 0.5s ease-in-out infinite 0.1s;
+}
+
+.music-toggle.playing .bar:nth-child(3) {
+  height: 14px;
+  animation: barMove 0.6s ease-in-out infinite 0.2s;
+}
+
+@keyframes barMove {
+  0%, 100% {
+    height: 8px;
+  }
+  50% {
+    height: 20px;
+  }
+}
+
+.music-toggle.playing .music-icon {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.music-toggle.playing .equalizer {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .music-toggle {
+    bottom: 20px;
+    right: 20px;
+    width: 55px;
+    height: 55px;
+    font-size: 1.3rem;
+  }
+
+  .music-prompt {
+    bottom: 85px;
+    right: 5px;
+    font-size: 0.8rem;
+    padding: 10px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .music-toggle {
+    bottom: 15px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+}
