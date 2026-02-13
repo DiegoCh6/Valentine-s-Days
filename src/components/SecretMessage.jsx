@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './SecretMessage.css';
-import secretVideo from '../assets/surprise-optimized.mp4';
 
 function SecretMessage() {
   const [digits, setDigits] = useState([0, 0, 0]);
@@ -8,6 +7,7 @@ function SecretMessage() {
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [showSecret, setShowSecret] = useState(false);
   const [error, setError] = useState('');
+  const videoRef = useRef(null);
 
   const correctDisplay = '441';
   const correctText = 'puchi'; // Cambiar según sea necesario
@@ -53,8 +53,23 @@ function SecretMessage() {
   };
 
   const closeSecretVideo = () => {
+    // Pause and reset video before closing
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
     setShowSecret(false);
   };
+
+  // Cleanup effect
+  useEffect(() => {
+    return () => {
+      if (videoRef.current) {
+        videoRef.current.pause();
+        videoRef.current.src = '';
+      }
+    };
+  }, []);
 
   return (
     <section className="secret-message">
@@ -142,7 +157,7 @@ function SecretMessage() {
         </div>
       </div>
 
-      {/* Secret Video Modal */}
+      {/* Secret Video Modal - Only render when unlocked */}
       {showSecret && (
         <div className="secret-video-overlay" onClick={closeSecretVideo}>
           <div className="secret-video-modal" onClick={(e) => e.stopPropagation()}>
@@ -151,12 +166,16 @@ function SecretMessage() {
             </button>
             <h3>🎥 I found the concert video of grupo 5</h3>
             <video
+              ref={videoRef}
               className="secret-video"
-              src={secretVideo}
               controls
               autoPlay
               playsInline
-            />
+              preload="metadata"
+            >
+              <source src="/src/assets/surprise-optimized.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       )}

@@ -57,8 +57,9 @@ function Hero() {
             <img 
               key={currentPhoto}
               src={photos[currentPhoto]} 
-              alt="Brenda" 
+              alt={`Brenda - Photo ${currentPhoto + 1}`}
               className="hero-photo"
+              loading="eager"
             />
             <div className="photo-overlay">
               <button className="photo-nav prev" onClick={handlePrevPhoto} aria-label="Previous photo">
@@ -70,7 +71,7 @@ function Hero() {
             </div>
           </div>
           <div className="photo-indicators">
-            {photos.map((_, index) => (
+            {Array.from({ length: photos.length }, (_, index) => (
               <button
                 key={index}
                 className={`indicator ${index === currentPhoto ? "active" : ""}`}

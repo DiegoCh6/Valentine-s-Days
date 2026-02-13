@@ -8,7 +8,8 @@ import IMG_19 from '../assets/IMG_19.jpeg';
 import IMG_09 from '../assets/IMG_09.jpeg';
 
 function LoveMessage() {
-  const [revealedIndex, setRevealedIndex] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isRevealed, setIsRevealed] = useState(false);
 
   const messages = [
     {
@@ -43,39 +44,82 @@ function LoveMessage() {
     },
   ];
 
+  const handleNext = () => {
+    setIsRevealed(false);
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev + 1) % messages.length);
+    }, 300);
+  };
+
+  const handlePrev = () => {
+    setIsRevealed(false);
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev - 1 + messages.length) % messages.length);
+    }, 300);
+  };
+
+  const currentMessage = messages[currentIndex];
+
   return (
     <section className="love-message">
       <div className="message-header">
         <h2>A Message From My Heart</h2>
-        <p>Click on each message to reveal what I want you to know...</p>
+        <p>Click on the message to reveal what I want you to know...</p>
       </div>
 
       <div className="messages-grid">
-        {messages.map((message, index) => (
-          <div
-            key={index}
-            className={`message-card ${revealedIndex === index ? 'revealed' : ''}`}
-            onClick={() => setRevealedIndex(revealedIndex === index ? null : index)}
-            style={{
-              backgroundImage: `url(${message.image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-            }}
-          >
-            <div className="card-inner">
-              <div className="card-front">
-                <div className="card-number">{index + 1}</div>
-                <div className="card-title">{message.title}</div>
-                <div className="click-hint">Click to reveal</div>
-              </div>
-              <div className="card-back">
-                <p>{message.text}</p>
-              </div>
+        <div
+          className={`message-card ${isRevealed ? 'revealed' : ''}`}
+          onClick={() => setIsRevealed(!isRevealed)}
+          style={{
+            backgroundImage: `url(${currentMessage.image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+        >
+          <div className="card-inner">
+            <div className="card-front">
+              <div className="card-number">{currentIndex + 1}</div>
+              <div className="card-title">{currentMessage.title}</div>
+              <div className="click-hint">Click to reveal</div>
             </div>
-            <div className="card-decoration"></div>
+            <div className="card-back">
+              <p>{currentMessage.text}</p>
+            </div>
           </div>
-        ))}
+          <div className="card-decoration"></div>
+        </div>
+      </div>
+
+      <div className="message-navigation">
+        <button 
+          className="nav-button prev" 
+          onClick={(e) => { e.stopPropagation(); handlePrev(); }}
+          aria-label="Previous message"
+        >
+          ❮ Previous
+        </button>
+        <div className="message-indicators">
+          {Array.from({ length: messages.length }, (_, index) => (
+            <button
+              key={index}
+              className={`indicator ${index === currentIndex ? 'active' : ''}`}
+              onClick={() => {
+                setIsRevealed(false);
+                setTimeout(() => setCurrentIndex(index), 300);
+              }}
+              aria-label={`Message ${index + 1}`}
+            />
+          ))}
+        </div>
+        <button 
+          className="nav-button next" 
+          onClick={(e) => { e.stopPropagation(); handleNext(); }}
+          aria-label="Next message"
+        >
+          Next ❯
+        </button>
       </div>
 
       <div className="message-footer">

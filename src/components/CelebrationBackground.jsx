@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './CelebrationBackground.css';
 import IMG_14 from '../assets/IMG_14.jpeg';
 import IMG_15 from '../assets/IMG_15.jpeg';
@@ -12,21 +12,37 @@ import IMG_21 from '../assets/IMG_21.jpeg';
 const photos = [IMG_14, IMG_15, IMG_16, IMG_17, IMG_18, IMG_19, IMG_20, IMG_21];
 
 function CelebrationBackground() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [position, setPosition] = useState({ left: 50, top: 30 });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % photos.length);
+      // Randomize position for each new photo
+      setPosition({
+        left: Math.random() * 80 + 10, // 10% to 90%
+        top: Math.random() * 60 + 10,  // 10% to 70%
+      });
+    }, 1500); // Change photo every 1.5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="celebration-background">
-      {photos.map((photo, index) => (
-        <div
-          key={index}
-          className="floating-photo"
-          style={{
-            animationDelay: `${index * 0.15}s`,
-            left: `${(index * 12.5) % 100}%`,
-            top: `${Math.random() * 60 + 10}%`,
-          }}
-        >
-          <img src={photo} alt={`Memory ${index + 1}`} />
-        </div>
-      ))}
+      <div
+        className="floating-photo"
+        style={{
+          left: `${position.left}%`,
+          top: `${position.top}%`,
+        }}
+      >
+        <img 
+          src={photos[currentIndex]} 
+          alt={`Memory ${currentIndex + 1}`}
+          loading="lazy"
+        />
+      </div>
     </div>
   );
 }
