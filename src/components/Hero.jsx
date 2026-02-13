@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./Hero.css";
+import IMG_17 from "../assets/IMG_17.jpeg";
+import IMG_20 from "../assets/IMG_20.jpeg";
+import IMG_03 from "../assets/IMG_03.jpeg";
+import IMG_07 from "../assets/IMG_07.jpeg";
 
 function Hero() {
-  const photos = [
-    "/src/assets/IMG_17.jpeg",
-    "/src/assets/IMG_20.jpeg",
-    "/src/assets/IMG_03.jpeg",
-    "/src/assets/IMG_07.jpeg",
-  ];
+  const photos = [IMG_17, IMG_20, IMG_03, IMG_07];
 
   const [currentPhoto, setCurrentPhoto] = useState(0);
 

@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
 import './LoveMessage.css';
+import IMG_05 from '../assets/IMG_05.jpeg';
+import IMG_08 from '../assets/IMG_08.jpeg';
+import IMG_10 from '../assets/IMG_10.jpeg';
+import IMG_12 from '../assets/IMG_12.jpeg';
+import IMG_19 from '../assets/IMG_19.jpeg';
+import IMG_09 from '../assets/IMG_09.jpeg';
 
 function LoveMessage() {
   const [revealedIndex, setRevealedIndex] = useState(null);
@@ -8,32 +14,32 @@ function LoveMessage() {
     {
       title: '✨ Your Light',
       text: 'In a world that can sometimes feel cold and dark, you are a beacon of warmth. Your smile has the power to transform any moment, to turn ordinary days into memories worth treasuring forever.',
-      image: '/src/assets/IMG_05.jpeg',
+      image: IMG_05,
     },
     {
       title: '💫 Your Strength',
       text: 'From Cabanaconde xd to the heights of your dreams, you carry an inner strength that inspires everyone around you. You don\'t just dream—you build, you strive, you become.',
-      image: '/src/assets/IMG_08.jpeg',
+      image: IMG_08,
     },
     {
       title: '🌹 Your Grace',
       text: 'There\'s an elegance in the way you move through life, a thoughtfulness in your words, and a kindness in your heart that makes the world a better place, even if you deny it, I know that is who you are.',
-      image: '/src/assets/IMG_10.jpeg',
+      image: IMG_10,
     },
     {
       title: '💖 Your Value',
       text: 'You deserve to be celebrated, cherished, and loved for exactly who you are. Not for what you do or what you achieve, but simply for being the incredible person that you are.',
-      image: '/src/assets/IMG_12.jpeg',
+      image: IMG_12,
     },
     {
       title: '🫦 Your Beauty',
       text: 'I know that I have said this before, but I can\'t help saying it again. Your eyes, your mouth, your body, everything about you is.....🫠🫠🫠. I am really the luckiest person in the world to have you as a girlfriend.',
-      image: '/src/assets/IMG_19.jpeg',
+      image: IMG_19,
     },
     {
       title: '🌎 Our Journey',
       text: 'I would travel the world a thousand times over just to see your smile and hold your hand through every adventure life throws our way.',
-      image: '/src/assets/IMG_09.jpeg',
+      image: IMG_09,
     },
   ];
 
