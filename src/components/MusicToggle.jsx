@@ -65,7 +65,7 @@ function MusicToggle() {
     <>
       {!isPlaying && (
         <div className="music-prompt">
-          🎵 Turn up the music! Click here 👇
+          🎵 Ponte musiquita mi amor ❤️
         </div>
       )}
       <button 

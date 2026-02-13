@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './SecretMessage.css';
+import secretVideo from '../assets/surprise-optimized.mp4';
 
 function SecretMessage() {
   const [digits, setDigits] = useState([0, 0, 0]);
@@ -75,8 +76,8 @@ function SecretMessage() {
     <section className="secret-message">
       <div className="secret-container">
         <div className="secret-header">
-          <h2>🔐 Guess The Code</h2>
-          <p>Can you unlock the secret? 🎁</p>
+          <h2>🔐 Guess The Code😈😈😈</h2>
+          <p>Can you unlock the content 😈😈? </p>
         </div>
 
         {/* Decorative background */}
@@ -135,15 +136,23 @@ function SecretMessage() {
               />
             </div>
 
-            {/* Unlock button */}
-            <button
-              className="unlock-btn"
-              onClick={handleUnlock}
-              disabled={isUnlocked}
-              onKeyPress={handleKeyPress}
-            >
-              {isUnlocked ? '✓ Unlocked' : 'Unlock'}
-            </button>
+            {/* Unlock button or View Video button */}
+            {!isUnlocked ? (
+              <button
+                className="unlock-btn"
+                onClick={handleUnlock}
+                onKeyPress={handleKeyPress}
+              >
+                Unlock
+              </button>
+            ) : (
+              <button
+                className="unlock-btn unlocked"
+                onClick={() => setShowSecret(true)}
+              >
+                🎥 View Video
+              </button>
+            )}
           </div>
 
           {/* Status messages */}
@@ -171,9 +180,9 @@ function SecretMessage() {
               controls
               autoPlay
               playsInline
-              preload="metadata"
+              preload="auto"
             >
-              <source src="/src/assets/surprise-optimized.mp4" type="video/mp4" />
+              <source src={secretVideo} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>

@@ -104,7 +104,7 @@ function ValentineQuestion() {
 
         {noClickCount > 0 && noClickCount < 6 && (
           <p className="hint-text">
-            The YES button is getting bigger! 😊
+            No seas asi! 🙃
           </p>
         )}
 
@@ -130,7 +130,7 @@ function ValentineQuestion() {
                 <p>I can't wait to celebrate with you! 💕</p>
                 <p>Mandame captura al wsp :3 💕</p>
                 <div className="celebration-hearts">
-                  <img src={baileGif} alt="Celebration dance" className="celebration-gif" />
+                  <img src={baileGif} alt="Celebration dance" className="celebration-gif" loading="lazy" />
                 </div>
               </div>
             </div>
