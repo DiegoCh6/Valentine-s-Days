@@ -59,7 +59,7 @@ function Hero() {
               src={photos[currentPhoto]} 
               alt={`Brenda - Photo ${currentPhoto + 1}`}
               className="hero-photo"
-              loading="eager"
+              loading="lazy"
             />
             <div className="photo-overlay">
               <button className="photo-nav prev" onClick={handlePrevPhoto} aria-label="Previous photo">
