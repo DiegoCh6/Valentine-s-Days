@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './SecretMessage.css';
-import secretVideo from '../assets/surprise.mp4';
+import secretVideo from '../assets/surprise-optimized.mp4';
 
 function SecretMessage() {
   const [digits, setDigits] = useState([0, 0, 0]);
